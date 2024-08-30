@@ -5,4 +5,21 @@
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snippets"],
   "snippets.ultisnips.pythonPrompt": false,
   "clangd.arguments": ["--header-insertion=never"],
+  "tag.files": "tags",
+  "coc.preferences.jumpCommand": "tags",
+  "coc.source.tag": {
+      "enable": true
+  },
+  "coc.source.tag": {
+    "enable": true,
+    "filetypes": ["cpp", "c", "h"]
+  },
+  "coc.preferences.highlight.enable": true,
+  "languageserver": {
+    "qml": {
+      "command": "qmlls",
+      "filetypes": ["qml"],
+      "rootPatterns": ["CMakeLists.txt", "compile_commands.json"]
+    }
+  }
 }

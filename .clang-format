@@ -1,0 +1,7 @@
+BasedOnStyle: Google
+IndentWidth: 2
+UseTab: Never
+BreakBeforeBraces: Attach # 允许在同一行上附加大括号
+BinPackParameters: true  # 参数打包在同一行
+BinPackArguments: true  # 参数打包在同一行
+AllowShortIfStatementsOnASingleLine: true  # 确保短的 if 语句在同一行

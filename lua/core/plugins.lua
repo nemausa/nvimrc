@@ -1,4 +1,3 @@
---
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
 if not vim.loop.fs_stat(lazypath) then
   vim.fn.system({
@@ -19,12 +18,14 @@ require('lazy').setup({
   'nvim-tree/nvim-tree.lua',
   'nvim-lualine/lualine.nvim',
   'akinsho/bufferline.nvim',
-  'nvim-treesitter/nvim-treesitter',
+  {'nvim-treesitter/nvim-treesitter', lazy=false},
+  'sheerun/vim-polyglot',
   'vim-scripts/a.vim',
   'kyazdani42/nvim-web-devicons',
   'L3MON4D3/LuaSnip',
   'Nemausa/friendly-snippets', 
   'tpope/vim-fugitive',
+  "nvim-lua/plenary.nvim",
   'sindrets/diffview.nvim',
   'lewis6991/gitsigns.nvim',
   'mfussenegger/nvim-dap',
@@ -32,7 +33,12 @@ require('lazy').setup({
   'rcarriga/nvim-dap-ui',
   'theHamsta/nvim-dap-virtual-text',
   'nvim-neotest/nvim-nio',
-  'neovim/nvim-lspconfig',
+  'danymat/neogen',
+  'stevearc/aerial.nvim',
+  'preservim/tagbar',
+  'norcalli/nvim-colorizer.lua',
+  'tpope/vim-abolish',
   {'neoclide/coc.nvim', branch = 'release'},
-  -- 'folke/which-key.nvim',
+  'iamcco/markdown-preview.nvim',
+  'akinsho/toggleterm.nvim',
 })
