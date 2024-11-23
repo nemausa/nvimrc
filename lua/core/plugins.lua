@@ -41,4 +41,10 @@ require('lazy').setup({
   {'neoclide/coc.nvim', branch = 'release'},
   'iamcco/markdown-preview.nvim',
   'akinsho/toggleterm.nvim',
+  {"folke/trouble.nvim",
+    config = function()
+        require("trouble").setup {}
+    end
+  },
+  {'kevinhwang91/nvim-bqf', ft = 'qf' },
 })
