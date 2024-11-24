@@ -23,3 +23,4 @@ vim.o.termguicolors = true
 vim.g.tagbar_width = 30
 vim.g.tagbar_position = 'left'
 vim.g.tagbar_autofocus = 1
+vim.opt.makeprg = "cmake --build build"
