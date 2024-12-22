@@ -1,3 +1,3 @@
-require('colorizer').setup({
-  filetypes = {'*'} 
+require("colorizer").setup({
+  filetypes = { "*" },
 })

@@ -359,7 +359,12 @@ require("aerial").setup({
 })
 
 local map = vim.keymap.set
-map('n', '<leader>aa', ':AerialToggle!<CR>', { noremap = true, silent = true })
-map('n', '<leader>ap', ':AerialPrev<CR>', { noremap = true, silent = true })
-map('n', '<leader>an', ':AerialNext<CR>', { noremap = true, silent = true })
-map('n', '<leader>at', ':AerialNavToggle<CR>', { noremap = true, silent = true })
+map("n", "<leader>aa", ":AerialToggle!<CR>", { noremap = true, silent = true })
+map("n", "<leader>ap", ":AerialPrev<CR>", { noremap = true, silent = true })
+map("n", "<leader>an", ":AerialNext<CR>", { noremap = true, silent = true })
+map(
+  "n",
+  "<leader>at",
+  ":AerialNavToggle<CR>",
+  { noremap = true, silent = true }
+)

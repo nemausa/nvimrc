@@ -1,6 +1,6 @@
 require("symbols-outline").setup({
   providers = {
-    "coc"
+    "coc",
   },
   position = "left",
   width = 25,

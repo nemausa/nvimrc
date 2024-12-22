@@ -1,11 +1,17 @@
-local actions = require('telescope.actions')
-require('telescope').setup {
+local actions = require("telescope.actions")
+require("telescope").setup({
   defaults = {
     prompt_prefix = "   ",
     selection_caret = " ",
     entry_prefix = " ",
     sorting_strategy = "ascending",
-    file_ignore_patterns = { ".git/", "tags", "node_modules/", "__pycache__/", "*.lock" },
+    file_ignore_patterns = {
+      ".git/",
+      "tags",
+      "node_modules/",
+      "__pycache__/",
+      "*.lock",
+    },
     layout_config = {
       horizontal = {
         prompt_position = "top",
@@ -44,16 +50,39 @@ require('telescope').setup {
       show_columns = "both",
     },
   },
-}
-
-
+})
 
 local map = vim.keymap.set
-map("n", "<leader>fw", "<cmd>Telescope live_grep<CR>", { desc = "telescope live grep" })
-map("n", "<leader>fb", "<cmd>Telescope buffers<CR>", { desc = "telescope find buffers" })
-map("n", "<leader>fz", "<cmd>Telescope current_buffer_fuzzy_find<CR>", { desc = "telescope find in current buffer" })
-map("n", "<leader>ff", "<cmd>Telescope find_files<cr>", { desc = "telescope find files" })
-map("n", "<leader>fo", "<cmd>Telescope oldfiles<CR>", { desc = "telescope find oldfiles" })
+map(
+  "n",
+  "<leader>fw",
+  "<cmd>Telescope live_grep<CR>",
+  { desc = "telescope live grep" }
+)
+map(
+  "n",
+  "<leader>fb",
+  "<cmd>Telescope buffers<CR>",
+  { desc = "telescope find buffers" }
+)
+map(
+  "n",
+  "<leader>fz",
+  "<cmd>Telescope current_buffer_fuzzy_find<CR>",
+  { desc = "telescope find in current buffer" }
+)
+map(
+  "n",
+  "<leader>ff",
+  "<cmd>Telescope find_files<cr>",
+  { desc = "telescope find files" }
+)
+map(
+  "n",
+  "<leader>fo",
+  "<cmd>Telescope oldfiles<CR>",
+  { desc = "telescope find oldfiles" }
+)
 
 -- map("n", "<leader>fh", "<cmd>Telescope help_tags<CR>", { desc = "telescope help page" })
 -- map("n", "<leader>ma", "<cmd>Telescope marks<CR>", { desc = "telescope find marks" })
@@ -68,5 +97,9 @@ map(
   "<cmd>Telescope find_files follow=true no_ignore=true hidden=true<CR>",
   { desc = "telescope find all files" }
 )
-local telescope_builtin = require('telescope.builtin')
-map('n', '<leader>fc', '<cmd>lua require("telescope.builtin").grep_string({ search = vim.fn.input("Search for: "), search_dirs = { vim.fn.expand("%") } })<CR>')
+local telescope_builtin = require("telescope.builtin")
+map(
+  "n",
+  "<leader>fc",
+  '<cmd>lua require("telescope.builtin").grep_string({ search = vim.fn.input("Search for: "), search_dirs = { vim.fn.expand("%") } })<CR>'
+)

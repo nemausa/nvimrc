@@ -1,4 +1,4 @@
-local M = require('nvim-tree')
+local M = require("nvim-tree")
 
 M.setup({
   filters = { dotfiles = false },
