@@ -300,7 +300,7 @@ require("aerial").setup({
     min_width = { 0.2, 20 },
     win_opts = {
       cursorline = true,
-      winblend = 10,
+      winblend = 0,
     },
     -- Jump to symbol in source window when the cursor moves
     autojump = false,
