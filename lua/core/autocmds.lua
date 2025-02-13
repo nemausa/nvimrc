@@ -1,29 +1,32 @@
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>t2",
-  ":lua SetTab2()<CR>",
-  { noremap = true, silent = true }
-)
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>t4",
-  ":lua SetTab4()<CR>",
-  { noremap = true, silent = true }
-)
-
 function SetTab2()
-  vim.opt.softtabstop = 2
-  vim.opt.shiftwidth = 2
-  vim.opt.tabstop = 2
-  vim.opt.expandtab = true
+  vim.o.shiftwidth   = 2
+  vim.o.tabstop      = 2
+  vim.o.softtabstop  = 2
+  vim.o.expandtab    = true
+  print("Tab size set to 2")
 end
 
 function SetTab4()
-  vim.opt.softtabstop = 4
-  vim.opt.shiftwidth = 4
-  vim.opt.tabstop = 4
-  vim.opt.expandtab = true
+  vim.o.shiftwidth   = 4
+  vim.o.tabstop      = 4
+  vim.o.softtabstop  = 4
+  vim.o.expandtab    = true
+  print("Tab size set to 4")
 end
+
+-- 定义切换 Tab 宽度的函数
+function ToggleTabSize()
+  if vim.bo.tabstop == 4 then
+    SetTab2()
+  else
+    SetTab4()
+  end
+end
+
+-- 映射 leader+st 键来切换 tab 宽度（使用 vim.keymap.set 更加简洁）
+vim.keymap.set("n", "<leader>st", ToggleTabSize, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t2", SetTab2, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>t4", SetTab4, { noremap = true, silent = true })
 
 vim.cmd([[
   autocmd BufLeave,FocusLost * silent! wa!
@@ -31,14 +34,6 @@ vim.cmd([[
 ]])
 
 vim.cmd("autocmd FileType c,cpp setlocal commentstring=//\\ %s")
-vim.api.nvim_create_augroup("SetTabOptionsGroup", { clear = true })
-vim.api.nvim_create_autocmd({ "BufReadPost", "BufNewFile", "BufReadPre" }, {
-  group = "SetTabOptionsGroup",
-  pattern = { "*.c", "*.cpp", "*.h" },
-  callback = function()
-    SetTab2()
-  end,
-})
 
 vim.g.tagbar_type_c = {
   kinds = {
