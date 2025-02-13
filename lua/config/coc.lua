@@ -18,11 +18,11 @@ end
 local function install_coc_extensions()
   local extensions = {
     "coc-pairs",
-    "coc-clangd",
-    "coc-pyright",
-    "coc-tag",
-    "coc-snippets",
-    "coc-qml",
+    -- "coc-clangd",
+    -- "coc-pyright",
+    -- "coc-tag",
+    -- "coc-snippets",
+    -- "coc-qml",
   }
 
   for _, extension in ipairs(extensions) do
