@@ -16,6 +16,7 @@ require("telescope").setup({
       "node_modules/",
       "__pycache__/",
       "*.lock",
+      "%.png$" ,
     },
     layout_config = {
       horizontal = {
