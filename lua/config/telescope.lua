@@ -1,6 +1,11 @@
 local actions = require("telescope.actions")
 require("telescope").setup({
   defaults = {
+    path_display = function(opts, path)
+      local filename = vim.fn.fnamemodify(path, ":t")
+      local dir = vim.fn.fnamemodify(path, ":h")
+      return filename .. " (" .. dir .. ")"
+    end,
     prompt_prefix = "   ",
     selection_caret = " ",
     entry_prefix = " ",
@@ -15,7 +20,7 @@ require("telescope").setup({
     layout_config = {
       horizontal = {
         prompt_position = "top",
-        preview_width = 0.55,
+        preview_width = 0.4,
       },
       width = 0.87,
       height = 0.80,
