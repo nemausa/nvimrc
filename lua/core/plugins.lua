@@ -49,4 +49,10 @@ require("lazy").setup({
   },
   { "kevinhwang91/nvim-bqf", ft = "qf" },
   "windwp/nvim-spectre",
+  {
+    "numToStr/Comment.nvim",
+    config = function()
+      require('Comment').setup()
+    end
+  },
 })
