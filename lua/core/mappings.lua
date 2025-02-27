@@ -22,3 +22,5 @@ map("n", "<A-Down>", ":move .+1<CR>==")
 
 map("n", "<F8>", ":TagbarToggle<CR>", { noremap = true, silent = true })
 map("n", "<leader>tt", ":TagbarToggle<CR>", { noremap = true, silent = true })
+
+vim.api.nvim_set_keymap("n", "<leader>sr", "<cmd>Spectre<CR>", { noremap = true, silent = true })

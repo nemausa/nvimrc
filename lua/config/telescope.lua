@@ -17,6 +17,15 @@ require("telescope").setup({
       "__pycache__/",
       "*.lock",
       "%.png$" ,
+      ".next",
+      ".lock",
+      "package-lock.json",
+      ".jpg",
+      "jpeg",
+      "png",
+      "PNG",
+      "JPEG",
+      "JPG",
     },
     layout_config = {
       horizontal = {

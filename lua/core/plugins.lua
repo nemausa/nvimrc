@@ -55,4 +55,6 @@ require("lazy").setup({
       require('Comment').setup()
     end
   },
+  -- "nvim-pack/nvim-spectre",
+  "windwp/nvim-spectre",
 })

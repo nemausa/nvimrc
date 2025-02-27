@@ -91,7 +91,7 @@ vim.api.nvim_create_user_command("CustomDiffviewOpen", function()
   vim.cmd("DiffviewOpen")
 end, {})
 vim.keymap.set("n", "<leader>go", ":CustomDiffviewOpen<CR>")
-vim.keymap.set("n", "<leader>gdf", ":DiffviewClose<CR>")
+vim.keymap.set("n", "<leader>gdc", ":DiffviewClose<CR>")
 vim.keymap.set("n", "<leader>gp", ":Gitsigns preview_hunk<CR>", {})
 vim.keymap.set(
   "n",

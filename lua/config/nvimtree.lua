@@ -5,10 +5,10 @@ M.setup({
   disable_netrw = true,
   hijack_cursor = false,
   sync_root_with_cwd = true,
-  update_focused_file = {
-    enable = true,
-    update_root = false,
-  },
+  -- update_focused_file = {
+  --   enable = true,
+  --   update_root = false,
+  -- },
   git = {
     enable = false,
   },
@@ -35,3 +35,5 @@ M.setup({
     },
   },
 })
+
+vim.keymap.set('n', '<leader>nf', ':NvimTreeFindFile<CR>', { silent = true })
