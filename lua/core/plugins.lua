@@ -60,20 +60,5 @@ require("lazy").setup({
   {
     "folke/which-key.nvim",
     lazy = false,
-    config = function()
-      require("which-key").setup {
-        plugins = {
-          marks = true,
-          registers = true,
-          spelling = { enabled = true, suggestions = 20 },
-        },
-        key_labels = { ["<space>"] = "SPC", ["<cr>"] = "ENTER" },
-        window = {
-          border = "rounded",
-          position = "top",
-          margin = { 1, 0, 1, 0 },
-        },
-      }
-    end,
   },
 })
