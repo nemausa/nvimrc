@@ -12,6 +12,32 @@ return {
       require "configs.lspconfig"
     end,
   },
+  {
+    "vim-scripts/a.vim",
+    lazy = false,
+    -- config = function()
+    --   require "configs.autocmds"
+    -- end,
+  },
+  {
+    "L3MON4D3/LuaSnip",
+    lazy = false,
+  },
+  {
+    "Nemausa/friendly-snippets",
+    lazy = false,
+  },
+  {
+    "preservim/tagbar",
+    lazy = false,
+  },
+  {
+    "numToStr/Comment.nvim",
+    lazy = false,
+    config = function()
+      require('Comment').setup()
+    end
+  },
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
