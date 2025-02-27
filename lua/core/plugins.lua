@@ -57,8 +57,4 @@ require("lazy").setup({
   },
   -- "nvim-pack/nvim-spectre",
   "windwp/nvim-spectre",
-  {
-    "folke/which-key.nvim",
-    lazy = false,
-  },
 })
