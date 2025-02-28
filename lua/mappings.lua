@@ -4,6 +4,10 @@ require "nvchad.mappings"
 
 local map = vim.keymap.set
 
+map("n", "<F1>", "<nop>", { noremap = true, silent = true })
+map("i", "<F1>", "<nop>", { noremap = true, silent = true })
+map("v", "<F1>", "<nop>", { noremap = true, silent = true })
+
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 

@@ -8,32 +8,39 @@ return {
   -- These are some examples, uncomment them if you want to see them work!
   {
     "neovim/nvim-lspconfig",
+    lazy = true,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.lspconfig"
     end,
   },
   {
     "vim-scripts/a.vim",
-    lazy = false,
-    -- config = function()
-    --   require "configs.autocmds"
-    -- end,
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+        vim.api.nvim_del_keymap("n", "<Space>ihn")
+        vim.api.nvim_del_keymap("n", "<Space>is")
+        vim.api.nvim_del_keymap("n", "<Space>ih")
+        vim.api.nvim_del_keymap("i", "<Space>ihn")
+        vim.api.nvim_del_keymap("i", "<Space>is")
+        vim.api.nvim_del_keymap("i", "<Space>ih")
+    end,
   },
   {
     "L3MON4D3/LuaSnip",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "Nemausa/friendly-snippets",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "preservim/tagbar",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "numToStr/Comment.nvim",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require('Comment').setup()
     end

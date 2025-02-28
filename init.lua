@@ -40,4 +40,5 @@ vim.schedule(function()
   require "mappings"
   require "autocmds"
   require "coc"
+  require "configs.telescope"
 end)
