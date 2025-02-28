@@ -45,6 +45,14 @@ return {
       require('Comment').setup()
     end
   },
+  {
+    "neoclide/coc.nvim", 
+    branch = "release", 
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+        require "configs.coc"
+    end
+  }
 
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",

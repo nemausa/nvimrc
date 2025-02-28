@@ -21,7 +21,7 @@ vim.cmd([[
 vim.api.nvim_create_user_command("Ctags", function()
   local cwd = vim.fn.getcwd()
   local result = vim.fn.system(
-    "ctags -R --exclude=output  --exclude=linux-5.10 --languages=C,C++ --fields=+l+K --extra=+q --c-kinds=+p+f+g+u+s+e+m+t+v  "
+    "ctags -R --exclude=.git  --exclude=build --languages=C,C++ --fields=+l+K --extra=+q --c-kinds=+p+f+g+u+s+e+m+t+v  "
       .. cwd
   )
 end, {})
@@ -40,24 +40,24 @@ map(
   'pumvisible() ? "<C-p>" : "<S-Tab>"',
   { expr = true, noremap = true, silent = true }
 )
--- map(
---   "i",
---   "<CR>",
---   'pumvisible() ? coc#_select_confirm() : "<CR>"',
---   { expr = true, noremap = true, silent = true }
--- )
--- map(
---   "i",
---   "<Tab>",
---   'coc#pum#visible() ? coc#pum#next(1) : "<Tab>"',
---   { expr = true, noremap = true, silent = true }
--- )
--- map(
---   "i",
---   "<CR>",
---   'coc#pum#visible() ? coc#pum#confirm() : "<CR>"',
---   { expr = true, noremap = true, silent = true }
--- )
+map(
+  "i",
+  "<CR>",
+  'pumvisible() ? coc#_select_confirm() : "<CR>"',
+  { expr = true, noremap = true, silent = true }
+)
+map(
+  "i",
+  "<Tab>",
+  'coc#pum#visible() ? coc#pum#next(1) : "<Tab>"',
+  { expr = true, noremap = true, silent = true }
+)
+map(
+  "i",
+  "<CR>",
+  'coc#pum#visible() ? coc#pum#confirm() : "<CR>"',
+  { expr = true, noremap = true, silent = true }
+)
 map("n", "<leader>ts", ":tselect<CR>t")
 map("n", "gt", ":CocAction<CR>", { noremap = true, silent = true })
 map("n", "gd", "<C-]>zz", { noremap = true, silent = true })
