@@ -2,8 +2,6 @@
     "coc.preferences.diagnostic.displayByAle": false,
     "diagnostic.enable": false,
     "suggest.enablePreselect": true,
-    "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snippets"],
-    "snippets.ultisnips.pythonPrompt": false,
     "clangd.arguments": ["--header-insertion=never"],
     "tag.files": "tags",
     "coc.preferences.jumpCommand": "tags",
