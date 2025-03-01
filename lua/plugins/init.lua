@@ -26,14 +26,14 @@ return {
         vim.api.nvim_del_keymap("i", "<Space>ih")
     end,
   },
-  -- {
-  --   "L3MON4D3/LuaSnip",
-  --   event = { "BufReadPre", "BufNewFile" },
-  -- },
-  -- {
-  --   "Nemausa/friendly-snippets",
-  --   event = { "BufReadPre", "BufNewFile" },
-  -- },
+  {
+    "L3MON4D3/LuaSnip",
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "Nemausa/friendly-snippets",
+    event = { "BufReadPre", "BufNewFile" },
+  },
   {
     "preservim/tagbar",
     event = { "BufReadPre", "BufNewFile" },

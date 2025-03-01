@@ -11,7 +11,6 @@ map("v", "<F1>", "<nop>", { noremap = true, silent = true })
 map("n", ";", ":", { desc = "CMD enter command mode" })
 map("i", "jk", "<ESC>")
 
--- map({ "n", "i", "v" }, "<C-s>", "<cmd> w <cr>")
 map("n", "<F1>", "<nop>", { noremap = true, silent = true })
 map("i", "<F1>", "<nop>", { noremap = true, silent = true })
 map("v", "<F1>", "<nop>", { noremap = true, silent = true })
@@ -29,5 +28,3 @@ map("n", "<A-Down>", ":move .+1<CR>==")
 
 map("n", "<F8>", ":TagbarToggle<CR>", { noremap = true, silent = true })
 map("n", "<leader>tt", ":TagbarToggle<CR>", { noremap = true, silent = true })
-
-vim.api.nvim_set_keymap("n", "<leader>sr", "<cmd>Spectre<CR>", { noremap = true, silent = true })

@@ -14,7 +14,6 @@ function SetTab4()
   print("Tab size set to 4")
 end
 
--- 定义切换 Tab 宽度的函数
 function ToggleTabSize()
   if vim.bo.tabstop == 4 then
     SetTab2()
@@ -23,7 +22,6 @@ function ToggleTabSize()
   end
 end
 
--- 映射 leader+st 键来切换 tab 宽度（使用 vim.keymap.set 更加简洁）
 vim.keymap.set("n", "<leader>st", ToggleTabSize, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t2", SetTab2, { noremap = true, silent = true })
 vim.keymap.set("n", "<leader>t4", SetTab4, { noremap = true, silent = true })
