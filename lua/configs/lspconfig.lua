@@ -4,7 +4,7 @@ require("nvchad.configs.lspconfig").defaults()
 local lspconfig = require "lspconfig"
 
 -- EXAMPLE
-local servers = { "html", "cssls", "clangd", "qml" }
+local servers = { "html", "cssls", "clangd"}
 local nvlsp = require "nvchad.configs.lspconfig"
 
 -- lsps with default config
@@ -19,6 +19,12 @@ end
 lspconfig.clangd.setup{
   cmd = { "clangd", "--function-arg-placeholders" },
   -- 其他配置项…
+}
+
+lspconfig.qmlls.setup = {
+    cmd = { "/opt/Qt/Tools/QtDesignStudio/qt6_design_studio_reduced_version/plugins/qmlls" }, 
+    filetypes = { "qml" },
+    root_dir = lspconfig.util.root_pattern("CMakeLists.txt", ".git"),
 }
 
 -- configuring single server, example: typescript
