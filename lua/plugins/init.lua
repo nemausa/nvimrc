@@ -6,14 +6,14 @@ return {
   },
 
   -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    lazy = true,
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   lazy = false,
+  --   --event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     require "configs.lspconfig"
+  --   end,
+  -- },
   {
     "vim-scripts/a.vim",
     event = { "BufReadPre", "BufNewFile" },
@@ -45,12 +45,13 @@ return {
       require('Comment').setup()
     end
   },
-  -- {
-  --   "neoclide/coc.nvim", 
-  --   branch = "release", 
-  --   event = { "BufReadPre", "BufNewFile" },
-  -- }
-
+  {
+    "neoclide/coc.nvim", 
+    branch = "release", 
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  { "neovim/nvim-lspconfig", enabled = false }, -- 禁用 LSP
+  { "hrsh7th/nvim-cmp", enabled = false },      -- 禁用 nvim-cmp
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {

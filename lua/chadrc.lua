@@ -20,5 +20,15 @@ M.base46 = {
 --          lazyload = false
 --      }
 --}
+--
+M.plugins = {
+   user = {},
+   override = {
+      ["hrsh7th/nvim-cmp"] = function()
+         return {} -- 禁用 nvim-cmp
+      end,
+   },
+}
+
 
 return M
