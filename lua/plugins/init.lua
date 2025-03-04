@@ -50,6 +50,9 @@ return {
     branch = "release", 
     event = { "BufReadPre", "BufNewFile" },
   },
+  {'sbdchd/neoformat',
+    event = { "BufReadPre", "BufNewFile" },
+  },
   { "neovim/nvim-lspconfig", enabled = false }, -- 禁用 LSP
   { "hrsh7th/nvim-cmp", enabled = false },      -- 禁用 nvim-cmp
   -- {
