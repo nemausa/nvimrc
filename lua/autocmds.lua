@@ -22,9 +22,9 @@ function ToggleTabSize()
   end
 end
 
-vim.keymap.set("n", "<leader>st", ToggleTabSize, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>t2", SetTab2, { noremap = true, silent = true })
-vim.keymap.set("n", "<leader>t4", SetTab4, { noremap = true, silent = true })
+vim.keymap.set("n", "<leader>st", ToggleTabSize, { noremap = true, silent = true,desc = "ToggleTabSize 2 or 4"  } )
+vim.keymap.set("n", "<leader>t2", SetTab2, { noremap = true, silent = true , desc = "Tab size set to 2"} )
+vim.keymap.set("n", "<leader>t4", SetTab4, { noremap = true, silent = true , desc = "Tab size set to 4"} )
 
 vim.cmd([[
   autocmd BufLeave,FocusLost * silent! wa!
