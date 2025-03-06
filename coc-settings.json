@@ -21,5 +21,19 @@
       "filetypes": ["qml"],
       "rootPatterns": ["CMakeLists.txt", "compile_commands.json"]
     }
+  },
+  "suggest.enablePreview": true,  // 显示补全项的文档预览
+  "suggest.floatEnable": true,    // 启用浮动窗口
+  "suggest.maxPreviewWidth": 80,  // 预览窗口最大宽度
+  "suggest.border": "rounded",    // 设置圆角边框
+  "suggest.defaultSortMethod": "length",
+  "suggest.disableKind": false,    // 显示类型标识符
+  "suggest.disableMenu": false,    // 显示菜单来源
+  "suggest.detailField": "menu",   // 在菜单栏显示函数签名等详情
+  "suggest.floatConfig": {
+    "border": "rounded",          // 补全窗口的边框（可选值: "single", "double", "rounded", "none"）
+    "winblend": 0,               // 透明度（0-100，值越高越透明）
+    "highlight": "Pmenu",         // 让浮动窗口使用 Pmenu 高亮
+    "scrollbar": true             // 启用滚动条
   }
 }
