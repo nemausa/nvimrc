@@ -50,7 +50,12 @@ return {
     branch = "release", 
     event = { "BufReadPre", "BufNewFile" },
   },
-  {'sbdchd/neoformat',
+  {
+    'sbdchd/neoformat',
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    'sheerun/vim-polyglot',
     event = { "BufReadPre", "BufNewFile" },
   },
   { "neovim/nvim-lspconfig", enabled = false }, -- 禁用 LSP
