@@ -54,6 +54,12 @@ map(
 )
 map(
   "i",
+  "<S-Tab>",
+  'coc#pum#visible() ? coc#pum#prev(1) : "<Tab>"',
+  { expr = true, noremap = true, silent = true }
+)
+map(
+  "i",
   "<CR>",
   'coc#pum#visible() ? coc#pum#confirm() : "<CR>"',
   { expr = true, noremap = true, silent = true }
