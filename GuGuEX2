@@ -117,14 +117,14 @@ dns:
       - +.gvt1.com
 proxies:
   # - {"name":"🇰🇷 Seoul","type":"vmess","server":"158.247.217.206","port":443,"cipher":"auto","uuid":"c77cfaf5-d19a-4c92-8806-1f1aeca94b62","alterId":0,"tls":true,"skip-cert-verify":true,"servername":"","network":"tcp"}
-  - {"type":"vmess","name":"🇺🇸 US.LA.BGP","ws-opts":{"path":"/nJh6oifScey","headers":{"host":"seoul.nemausa.top"}},"server":"158.247.219.158","port":"443","uuid":"c8ab5869-33d9-4745-a90c-6a338b3c5f30","alterId":"0","cipher":"auto","network":"ws","tls":true}
-  - {"type":"vmess","name":"🇭🇰 HongKong","ws-opts":{"path":"/fc1406f1/","headers":{"host":"hk.nemausa.top"}},"server":"38.47.123.212","port":"7890","uuid":"44bdc3cf-f4d7-490f-be3b-5f86e69ffe87","alterId":"0","cipher":"auto","network":"ws","tls":true}
-  - {"type":"vmess","name":"🇺🇸 LosAngeles","ws-opts":{"path":"/S5s8md","headers":{"host":"los.nemausa.top"}},"server":"45.77.68.74","port":"443","uuid":"ddca01ea-adbd-4c49-9a8b-54373ec54375","alterId":"0","cipher":"auto","network":"ws","tls":true}
+  #- {"type":"vmess","name":"🇺🇸 US.LA.BGP","ws-opts":{"path":"/nJh6oifScey","headers":{"host":"seoul.nemausa.top"}},"server":"158.247.219.158","port":"443","uuid":"c8ab5869-33d9-4745-a90c-6a338b3c5f30","alterId":"0","cipher":"auto","network":"ws","tls":true}
+  - {"type":"vmess","name":"🇭🇰 HongKong","ws-opts":{"path":"/08a99bb9/","headers":{"host":"hk.nemausa.top"}},"server":"hk.nemausa.top","port":"7890","uuid":"413ed42f-769d-48af-9281-29c2742f65a7","alterId":"0","cipher":"auto","network":"ws","tls":true}
+  - {"type":"vmess","name":"🇺🇸 LosAngeles","ws-opts":{"path":"/5ORDJ8cNhg8","headers":{"host":"los.nemausa.top"}},"server":"los.nemausa.top","port":"7890","uuid":"b57f253c-3f83-4959-9b1a-efaa35bd169c","alterId":"0","cipher":"auto","network":"ws","tls":true}
 proxy-groups:
   - name: GuGuEX
     type: select
     proxies:
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🍎 Apple
@@ -132,7 +132,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - GuGuEX
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 📲 Telegram
@@ -140,7 +140,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎬 YouTube
@@ -148,19 +148,19 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎬 ChatGPT
     type: select
     proxies:
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎬 GoogleAI
     type: select
     proxies:
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎬 Bilibili
@@ -168,7 +168,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - GuGuEX
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎬 myTVSUPER
@@ -176,7 +176,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 📲 LineTV
@@ -184,7 +184,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎬 iQiyi
@@ -192,7 +192,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - GuGuEX
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🎵 Tiktok
@@ -200,7 +200,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 📺 Netflix
@@ -208,7 +208,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🌐 Google
@@ -216,7 +216,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 🖥 Microsoft
@@ -224,7 +224,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 📟 Twitter
@@ -232,7 +232,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: 📺 International-Media
@@ -240,7 +240,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: China-Media
@@ -248,7 +248,7 @@ proxy-groups:
     proxies:
       - GuGuEX
       - DIRECT
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: Hijacking
@@ -261,7 +261,7 @@ proxy-groups:
     proxies:
       - DIRECT
       - GuGuEX
-      - 🇺🇸 US.LA.BGP     
+      #- 🇺🇸 US.LA.BGP     
       - 🇭🇰 HongKong
       - 🇺🇸 LosAngeles
   - name: Final
