@@ -58,6 +58,34 @@ return {
     'sheerun/vim-polyglot',
     event = { "BufReadPre", "BufNewFile" },
   },
+  {
+    "iamcco/markdown-preview.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "mfussenegger/nvim-dap",
+    lazy = false,
+  },
+  {
+    "nvim-neotest/nvim-nio",
+    lazy = false,
+  },
+  {
+    "mfussenegger/nvim-dap-python",
+    lazy = false,
+  },
+  {
+    "rcarriga/nvim-dap-ui",
+    lazy = false,
+  },
+  {
+    "theHamsta/nvim-dap-virtual-text",
+    lazy = false,
+    config = function()
+      require "configs.dap_config"
+      require "configs.dap_cpp"
+    end,
+  },
   { "neovim/nvim-lspconfig", enabled = false }, -- 禁用 LSP
   { "hrsh7th/nvim-cmp", enabled = false },      -- 禁用 nvim-cmp
   -- {

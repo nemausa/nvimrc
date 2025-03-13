@@ -28,4 +28,4 @@ map("n", "<A-Down>", ":move .+1<CR>==")
 
 map("n", "<F8>", ":TagbarToggle<CR>", { noremap = true, silent = true })
 map("n", "<leader>tt", ":TagbarToggle<CR>", { noremap = true, silent = true })
-map("n", "<F5>", "<cmd>w<CR>:!g++ % -o %:r && ./%:r<CR>", { noremap = true, silent = true })
+map("n", "<leader>gg", "<cmd>w<CR>:!g++ -g % -o %:r && ./%:r<CR>", { noremap = true, silent = true, desc = "compile cpp and run" })
