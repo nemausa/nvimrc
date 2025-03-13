@@ -64,23 +64,26 @@ return {
   },
   {
     "mfussenegger/nvim-dap",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "nvim-neotest/nvim-nio",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "mfussenegger/nvim-dap-python",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.dap_python"
+    end,
   },
   {
     "rcarriga/nvim-dap-ui",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
   },
   {
     "theHamsta/nvim-dap-virtual-text",
-    lazy = false,
+    event = { "BufReadPre", "BufNewFile" },
     config = function()
       require "configs.dap_config"
       require "configs.dap_cpp"
