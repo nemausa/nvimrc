@@ -21,7 +21,7 @@ vim.cmd([[
 vim.api.nvim_create_user_command("Ctags", function()
   local cwd = vim.fn.getcwd()
   local result = vim.fn.system(
-    "ctags -R --exclude=.git  --exclude=build --languages=C,C++ --fields=+l+K --extra=+q --c-kinds=+p+f+g+u+s+e+m+t+v  "
+    "ctags -R --exclude=.git   "
       .. cwd
   )
 end, {})
