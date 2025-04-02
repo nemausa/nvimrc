@@ -23,7 +23,11 @@ map("n", "<A-Down>", ":move .+1<CR>==")
 
 map("n", "<F8>", ":TagbarToggle<CR>", { noremap = true, silent = true })
 map("n", "<leader>tt", ":TagbarToggle<CR>", { noremap = true, silent = true })
-map("n", "<leader>gg", "<cmd>w<CR>:!g++ -g % -o %:r && ./%:r<CR>", { noremap = true, silent = true, desc = "compile cpp and run" })
+-- map("n", "<leader>gg", "<cmd>w<CR>:!g++ -g % -o %:r && ./%:r<CR>", { noremap = true, silent = true, desc = "compile cpp and run" })
+map("n", "<leader>gg",
+    "<cmd>w<CR>:!mkdir -p %:p:h/bin && g++ -g % -o %:p:h/bin/%:t:r && %:p:h/bin/%:t:r<CR>",
+    { noremap = true, silent = true, desc = "compile cpp and run" })
+
 map("n", "<leader>h", "0")
 map("n", "<leader>l", "$")
 
