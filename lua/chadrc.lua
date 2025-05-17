@@ -20,17 +20,6 @@ M.base46 = {
 --          lazyload = false
 --      }
 --}
---
-M.plugins = {
-   user = {},
-   override = {
-      ["hrsh7th/nvim-cmp"] = function()
-         return {} -- 禁用 nvim-cmp
-      end,
-   },
-}
-
-M.term = { float = { row = 0.1, col = 0.1, width = 0.8, height = 0.6 } }
 
 
 return M
