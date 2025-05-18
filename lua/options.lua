@@ -48,5 +48,9 @@ if os.getenv "SSH_TTY" then
 end
 
 require("configs.header_switch")
-vim.keymap.set("n", "<leader>z", require("configs.header_switch").switch, { silent = true, desc = "Switching header/source files" })
+-- vim.keymap.set("n", "<leader>z", require("configs.header_switch").switch, { silent = true, desc = "Switching header/source files" })
+vim.keymap.set("n", "<leader>z",
+  '<cmd>lua require("configs.header_switch").switch()<CR><cmd>normal! zz<CR>',
+  { silent = true, desc = "Switch header/source files and center view" }
+)
 vim.keymap.set("n", "<M-o>", require("configs.header_switch").switch, { silent = true, desc = "Switching header/source files" })
