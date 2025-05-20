@@ -30,10 +30,10 @@ return {
     "L3MON4D3/LuaSnip",
     event = { "BufReadPre", "BufNewFile" },
   },
-  {
-    "Nemausa/friendly-snippets",
-    event = { "BufReadPre", "BufNewFile" },
-  },
+--   {
+--     "Nemausa/friendly-snippets",
+--     event = { "BufReadPre", "BufNewFile" },
+--   },
   {
     "preservim/tagbar",
     event = { "BufReadPre", "BufNewFile" },

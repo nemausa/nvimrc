@@ -31,7 +31,9 @@ map("n", "<leader>gg",
 map("n", "<leader>h", "0")
 map("n", "<leader>l", "$")
 
-map("n", "<C-a>", "0", { noremap = true, silent = true, desc = "Move to beginning of line" })
-map("n", "<C-e>", "$", { noremap = true, silent = true, desc = "Move to end of line" })
-map("v", "<C-a>", "0", { noremap = true, silent = true, desc = "Move to beginning of line in visual mode" })
-map("v", "<C-e>", "$", { noremap = true, silent = true, desc = "Move to end of line in visual mode" })
+map("n", "<C-h>", "0", { noremap = true, silent = true, desc = "Move to beginning of line in insert mode" })
+map("v", "<C-h>", "0", { noremap = true, silent = true, desc = "Move to beginning of line in visual mode" })
+map("i", "<C-h>", "0", { noremap = true, silent = true, desc = "Move to beginning of line" })
+map("n", "<C-l>", "$", { noremap = true, silent = true, desc = "Move to end of line" })
+map("v", "<C-l>", "$", { noremap = true, silent = true, desc = "Move to end of line in visual mode" })
+map("i", "<C-l>", "<Esc>A", { noremap = true, silent = true, desc = "Move to end of line in visual mode in insert mode" })
