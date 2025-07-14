@@ -57,6 +57,6 @@ vim.api.nvim_create_autocmd("BufWritePre", {
   end,
 })
 
-vim.cmd([[
-  autocmd BufWritePre *.cpp,*.h,*.hpp,*.c,*.cc Neoformat
-]])
+-- vim.cmd([[
+--   autocmd BufWritePre *.cpp,*.h,*.hpp,*.c,*.cc Neoformat
+-- ]])
