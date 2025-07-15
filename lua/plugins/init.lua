@@ -50,6 +50,11 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
   {
+    "neoclide/coc.nvim", 
+    branch = "release", 
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
     'sheerun/vim-polyglot',
     event = { "BufReadPre", "BufNewFile" },
   },
