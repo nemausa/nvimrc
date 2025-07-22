@@ -1,13 +1,6 @@
--- File: ~/.config/nvim/lua/configs/header_switch.lua
-
 local M = {}
 
--- Check if a file is readable
-local function exists(path)
-  return vim.fn.filereadable(path) == 1
-end
-
--- Determine the project root: prefer Git root, otherwise use current working directory
+-- 搜索 project 根目录 (优先 git)
 local function get_root()
   local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
   if git_root and git_root ~= '' then
@@ -16,43 +9,56 @@ local function get_root()
   return vim.fn.getcwd()
 end
 
--- Main switch function: recursively glob through the project
+-- 获取完整basename（多后缀处理，比如 foo.bar.cpp）
+local function get_basename(path)
+  local fname = vim.fn.fnamemodify(path, ":t")
+  return fname:gsub('%.[^%.]+$', '')
+end
+
 function M.switch()
   local current_path = vim.api.nvim_buf_get_name(0)
   if current_path == "" then
     return
   end
 
-  -- Extract file extension and base name
   local ext  = vim.fn.fnamemodify(current_path, ":e")
-  local name = vim.fn.fnamemodify(current_path, ":t:r")
+  local name = get_basename(current_path)
   local root = get_root()
 
-  -- Determine target extensions based on current file type
   local targets
-  if ext:match('^c$') or ext:match('^cpp$') or ext:match('^cc$') or ext:match('^cxx$') then
-    -- Source file -> Header file
-    targets = { '.h', '.hpp', '.hh' }
-  elseif ext:match('^h$') or ext:match('^hpp$') or ext:match('^hh$') then
-    -- Header file -> Source file
-    targets = { '.c', '.cpp', '.cc', '.cxx' }
+  if vim.tbl_contains({ "c", "cpp", "cc", "cxx" }, ext) then
+    targets = { "h", "hpp", "hh" }
+  elseif vim.tbl_contains({ "h", "hpp", "hh" }, ext) then
+    targets = { "c", "cpp", "cc", "cxx" }
   else
     vim.notify("Unsupported file type: " .. ext, vim.log.levels.WARN)
     return
   end
 
-  -- Search for matching files under the project root
+  -- 当前目录优先
+  local curdir = vim.fn.fnamemodify(current_path, ":h")
   for _, e in ipairs(targets) do
-    local pattern = '**/' .. name .. e
-    local matches = vim.fn.globpath(root, pattern, false, true)
-    -- If globpath returns a single string, convert to list
-    if type(matches) == 'string' then
-      matches = { matches }
-    end
-    if matches and #matches > 0 then
-      -- Open the first matching file
-      vim.cmd('edit ' .. vim.fn.fnameescape(matches[1]))
+    local local_path = string.format("%s/%s.%s", curdir, name, e)
+    if vim.fn.filereadable(local_path) == 1 then
+      vim.cmd('edit ' .. vim.fn.fnameescape(local_path))
       return
+    end
+  end
+
+  -- 全项目搜索
+  -- 启用递归 globstar
+  vim.o.globstar = true
+  for _, e in ipairs(targets) do
+    local pattern = string.format("%s/**/%s.%s", root, name, e)
+    local matches = vim.fn.glob(pattern, true, true)
+    if matches and #matches > 0 then
+      -- 多个匹配时排除当前文件
+      for _, f in ipairs(matches) do
+        if vim.fn.fnamemodify(f, ":p") ~= vim.fn.fnamemodify(current_path, ":p") then
+          vim.cmd('edit ' .. vim.fn.fnameescape(f))
+          return
+        end
+      end
     end
   end
 
