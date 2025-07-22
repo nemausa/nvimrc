@@ -8,11 +8,12 @@
   "tag.files": "tags",
   "coc.preferences.jumpCommand": "tags",
   "coc.source.tag": {
-      "enable": true
-  },
-  "coc.source.tag": {
     "enable": true,
     "filetypes": ["cpp", "c", "h"]
+  },
+  "coc.preferences.filetypeMap": {
+    "c": "cpp",
+    "hpp": "cpp"
   },
   "coc.preferences.highlight.enable": true,
   "languageserver": {
@@ -20,6 +21,13 @@
       "command": "qmlls",
       "filetypes": ["qml"],
       "rootPatterns": ["CMakeLists.txt", "compile_commands.json"]
+    },
+    "clangd": {
+      "command": "clangd",
+      "filetypes": ["c", "cpp", "objc", "objcpp", "cuda"],
+      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+      "trace.server": "verbose",
+      "initializationOptions": {}
     }
   },
   "suggest.enablePreview": true,  // 显示补全项的文档预览
