@@ -43,3 +43,14 @@ require("telescope").setup({
   },
 
 })
+
+local telescope = require("telescope")
+
+vim.keymap.set("n", "<leader>sg", function()
+  telescope.extensions.live_grep_args.live_grep_args{
+    auto_quoting = true,
+    additional_args = function(args)
+      return {"-F"}
+    end,
+  }
+end, { desc = "Telescope: 字面量 live_grep" })
