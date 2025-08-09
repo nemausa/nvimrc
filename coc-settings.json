@@ -22,13 +22,13 @@
       "filetypes": ["qml"],
       "rootPatterns": ["CMakeLists.txt", "compile_commands.json"]
     },
-    "clangd": {
-      "command": "clangd",
-      "filetypes": ["c", "cpp", "objc", "objcpp", "cuda"],
-      "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-      "trace.server": "verbose",
-      "initializationOptions": {}
-    }
+    // "clangd": {
+    //   "command": "clangd",
+    //   "filetypes": ["c", "cpp", "objc", "objcpp", "cuda"],
+    //   "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
+    //   "trace.server": "verbose",
+    //   "initializationOptions": {}
+    // }
   },
   "suggest.enablePreview": true,  // 显示补全项的文档预览
   "suggest.floatEnable": true,    // 启用浮动窗口
