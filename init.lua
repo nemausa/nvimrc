@@ -55,7 +55,7 @@ vim.schedule(function()
   require "autocmds"
   require "configs.telescope"
   require "configs.nvimtree"
-  require "configs.coc"
+  -- require "configs.coc"
   require "configs.header_switch"
   require("luasnip.loaders.from_lua").lazy_load({ paths = "~/.config/nvim/lua/snippets" })
 end)

@@ -1,44 +1,69 @@
-local util    = require("lspconfig.util")
-local nvlsp   = require("nvchad.configs.lspconfig")
+local lspconfig = require("lspconfig")
+local cmp = require("cmp")
+local nvlsp = require("nvchad.configs.lspconfig")
+
+-- 启用调试日志并提供后备
+vim.lsp.set_log_level("debug")
+if not vim.lsp.log then
+  vim.lsp.log = {
+    info = function(msg) print("LSP INFO: " .. msg) end,
+    warn = function(msg) print("LSP WARN: " .. msg) end,
+    error = function(msg) print("LSP ERROR: " .. msg) end,
+  }
+end
+
+-- 默认 LSP 配置
 nvlsp.defaults()
 
-local lspconfig = require("lspconfig")
-local servers   = { "html", "cssls", "pyright", "dartls" }
-
+-- 自定义 on_attach
 local custom_on_attach = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
-  local opts = { noremap=true, silent=true, buffer=bufnr }
+  local opts = { noremap = true, silent = true, buffer = bufnr }
   vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
-  vim.keymap.set("n", "gD", vim.lsp.buf.definition,  opts)
+  vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
+
+-- LSP 服务器列表
+local servers = { "html", "cssls", "pyright", "dartls", "ts_ls", "clangd" }
 
 for _, name in ipairs(servers) do
   local opts = {
-    on_init     = nvlsp.on_init,
-    on_attach   = custom_on_attach,
-    capabilities= nvlsp.capabilities,
+    on_init = nvlsp.on_init,
+    on_attach = custom_on_attach,
+    capabilities = nvlsp.capabilities,
   }
 
+  if name == "clangd" then
+    opts.capabilities.offsetEncoding = { "utf-16" }
+    opts.cmd = {
+      "clangd",
+      "--background-index",
+      "--completion-style=detailed",
+      "--clang-tidy",
+      "--header-insertion=iwyu",
+      "--suggest-missing-includes",
+      "--limit-results=50",
+    }
+  end
+
   lspconfig[name].setup(opts)
-  
 end
 
-local cmp = require("cmp")
+-- CMP 补全配置
 cmp.setup({
-  -- 默认配置：非 c/cpp 文件用 LSP 补全
   sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
+    { name = "nvim_lsp", priority = 1000 },
+    { name = "buffer", priority = 500 },
+    { name = "path", priority = 250 },
   }),
-  -- ...
+  mapping = cmp.mapping.preset.insert(),
 })
 
--- 对 c/cpp 文件，禁用 LSP 补全源，只用 coc（或者只留 buffer/path/自定义源）
 cmp.setup.filetype({ "c", "cpp", "h", "hpp", "cc", "cxx" }, {
   sources = cmp.config.sources({
-    { name = "buffer" },   -- 只用 buffer
-    { name = "path" },
-    -- 不要加 nvim_lsp，不然会重复！
+    { name = "nvim_lsp", priority = 1000 },
+    { name = "buffer", priority = 500 },
+    { name = "path", priority = 250 },
   }),
 })

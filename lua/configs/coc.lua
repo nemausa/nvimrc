@@ -32,17 +32,7 @@ map("i","<Tab>"   , 'coc#pum#visible() ? coc#pum#next(1)   : "<Tab>"'   ,{expr=t
 map("i","<S-Tab>" , 'coc#pum#visible() ? coc#pum#prev(1)   : "<S-Tab>"' ,{expr=true,noremap=true,silent=true})
 map("i","<CR>"    , 'coc#pum#visible() ? coc#pum#confirm() : "<CR>"'    ,{expr=true,noremap=true,silent=true})
 
-map("n", "<leader>ts", ":tselect<CR>t")
-map("n", "gt", ":CocAction<CR>", { noremap = true, silent = true })
-map("n", "gd", "<C-]>zz", { noremap = true, silent = true })
+-- map("n", "gt", ":CocAction<CR>", { noremap = true, silent = true })
+-- map("n", "gd", "<C-]>zz", { noremap = true, silent = true })
 -- map("n", "<leader>z", ":A<CR>zz")
 -- map("n", "<M-o>", ":A<CR>zz")
-map("n", "<C-o>", "<C-o>zz", { noremap = true, silent = true })
-map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
-map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
-map(
-  "n",
-  "<leader>cf",
-  ":!clang-format -i %<CR><CR>",
-  { noremap = true, silent = true }
-)

@@ -37,3 +37,14 @@ map("i", "<A-h>", "0", { noremap = true, silent = true, desc = "Move to beginnin
 map("n", "<A-l>", "$", { noremap = true, silent = true, desc = "Move to end of line" })
 map("v", "<A-l>", "$", { noremap = true, silent = true, desc = "Move to end of line in visual mode" })
 map("i", "<A-l>", "<Esc>A", { noremap = true, silent = true, desc = "Move to end of line in visual mode in insert mode" })
+
+map("n", "<C-o>", "<C-o>zz", { noremap = true, silent = true })
+map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
+map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
+map(
+  "n",
+  "<leader>cf",
+  ":!clang-format -i %<CR><CR>",
+  { noremap = true, silent = true }
+)
+map("n", "<leader>ts", ":tselect<CR>t")
