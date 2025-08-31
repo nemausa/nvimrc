@@ -34,7 +34,18 @@ map("i","<CR>"    , 'coc#pum#visible() ? coc#pum#confirm() : "<CR>"'    ,{expr=t
 
 map("n", "<leader>ts", ":tselect<CR>t")
 map("n", "gt", ":CocAction<CR>", { noremap = true, silent = true })
-map("n", "gd", "<C-]>zz", { noremap = true, silent = true })
+-- map("n", "gd", "<C-]>zz", { noremap = true, silent = true })
+map("n", "gd", function()
+  local supported_filetypes = { "c", "cpp", "go", "cxx" }  -- 支持的文件类型
+
+  if vim.tbl_contains(supported_filetypes, vim.bo.filetype) then
+    vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes("<C-]>", true, false, true), "n", true)
+  else
+    print("Jump to definition is only available for C, C++, CXX, and Go files.")
+  end
+end, { noremap = true, silent = true })
+
+
 -- map("n", "<leader>z", ":A<CR>zz")
 -- map("n", "<M-o>", ":A<CR>zz")
 map("n", "<C-o>", "<C-o>zz", { noremap = true, silent = true })
