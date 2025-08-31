@@ -1,19 +1,19 @@
 return {
-  {
-    "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
-    opts = require "configs.conform",
-  },
+  -- {
+  --   "stevearc/conform.nvim",
+  --   -- event = 'BufWritePre', -- uncomment for format on save
+  --   opts = require "configs.conform",
+  -- },
 
   -- These are some examples, uncomment them if you want to see them work!
-  {
-    "neovim/nvim-lspconfig",
-    lazy = false,
-    -- event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.lspconfig"
-    end,
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   lazy = false,
+  --   -- event = { "BufReadPre", "BufNewFile" },
+  --   config = function()
+  --     require "configs.lspconfig"
+  --   end,
+  -- },
   {
     "vim-scripts/a.vim",
     event = { "BufReadPre", "BufNewFile" },
@@ -89,8 +89,8 @@ return {
       require "configs.dap_cpp"
     end,
   },
-  -- { "neovim/nvim-lspconfig", enabled = true }, -- 禁用 LSP
-  -- { "hrsh7th/nvim-cmp", enabled = true },      -- 禁用 nvim-cmp
+  { "neovim/nvim-lspconfig", enabled = false }, -- 禁用 LSP
+  { "hrsh7th/nvim-cmp", enabled = false },      -- 禁用 nvim-cmp
   {
     "dart-lang/dart-vim-plugin",
     event = { "BufReadPre", "BufNewFile" },

@@ -23,22 +23,22 @@ for _, name in ipairs(servers) do
   
 end
 
-local cmp = require("cmp")
-cmp.setup({
-  -- 默认配置：非 c/cpp 文件用 LSP 补全
-  sources = cmp.config.sources({
-    { name = "nvim_lsp" },
-    { name = "buffer" },
-    { name = "path" },
-  }),
-  -- ...
-})
+-- local cmp = require("cmp")
+-- cmp.setup({
+--   -- 默认配置：非 c/cpp 文件用 LSP 补全
+--   sources = cmp.config.sources({
+--     { name = "nvim_lsp" },
+--     { name = "buffer" },
+--     { name = "path" },
+--   }),
+--   -- ...
+-- })
 
--- 对 c/cpp 文件，禁用 LSP 补全源，只用 coc（或者只留 buffer/path/自定义源）
-cmp.setup.filetype({ "c", "cpp", "h", "hpp", "cc", "cxx" }, {
-  sources = cmp.config.sources({
-    { name = "buffer" },   -- 只用 buffer
-    { name = "path" },
-    -- 不要加 nvim_lsp，不然会重复！
-  }),
-})
+-- -- 对 c/cpp 文件，禁用 LSP 补全源，只用 coc（或者只留 buffer/path/自定义源）
+-- cmp.setup.filetype({ "c", "cpp", "h", "hpp", "cc", "cxx" }, {
+--   sources = cmp.config.sources({
+--     { name = "buffer" },   -- 只用 buffer
+--     { name = "path" },
+--     -- 不要加 nvim_lsp，不然会重复！
+--   }),
+-- })
