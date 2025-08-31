@@ -22,6 +22,20 @@
       "filetypes": ["qml"],
       "rootPatterns": ["CMakeLists.txt", "compile_commands.json"]
     },
+    "go": {
+      "command": "gopls",
+      "args": ["serve"],
+      "filetypes": ["go"],
+      "settings": {
+        "gopls": {
+          "usePlaceholders": true,
+          "completeUnimported": true,
+          "staticcheck": true
+        }
+      }
+    }
+  },
+  "go.useLanguageServer": true
     // "clangd": {
     //   "command": "clangd",
     //   "filetypes": ["c", "cpp", "objc", "objcpp", "cuda"],
