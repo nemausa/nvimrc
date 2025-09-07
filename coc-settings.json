@@ -1,10 +1,15 @@
 {
   "coc.preferences.diagnostic.displayByAle": false,
   "diagnostic.enable": false,
-  "suggest.enablePreselect": true,
+
   "snippets.ultisnips.directories": ["UltiSnips", "~/.config/nvim/snippets"],
   "snippets.ultisnips.pythonPrompt": false,
+
   "clangd.arguments": ["--header-insertion=never"],
+
+  "inlayHint.enable": false,
+  "clangd.inlayHints.enable": false,
+
   "tag.files": "tags",
   "coc.preferences.jumpCommand": "tags",
   "coc.source.tag": {
@@ -15,7 +20,9 @@
     "c": "cpp",
     "hpp": "cpp"
   },
+
   "coc.preferences.highlight.enable": true,
+
   "languageserver": {
     "qml": {
       "command": "qmlls",
@@ -35,35 +42,22 @@
       }
     }
   },
-  "go.useLanguageServer": true
-    // "clangd": {
-    //   "command": "clangd",
-    //   "filetypes": ["c", "cpp", "objc", "objcpp", "cuda"],
-    //   "rootPatterns": ["compile_flags.txt", "compile_commands.json", ".vim/", ".git/", ".hg/"],
-    //   "trace.server": "verbose",
-    //   "initializationOptions": {}
-    // }
-  },
-  "suggest.enablePreview": true,  // 显示补全项的文档预览
-  "suggest.floatEnable": true,    // 启用浮动窗口
-  "suggest.maxPreviewWidth": 80,  // 预览窗口最大宽度
-  "suggest.border": "rounded",    // 设置圆角边框
+
+  "go.useLanguageServer": true,
+
+  "suggest.enablePreselect": true,
+  "suggest.enablePreview": true,
+  "suggest.floatEnable": true,
+  "suggest.maxPreviewWidth": 80,
+  "suggest.border": "rounded",
   "suggest.defaultSortMethod": "recency",
-  "suggest.disableKind": false,    // 显示类型标识符
-  "suggest.disableMenu": false,    // 显示菜单来源
-  "suggest.detailField": "menu",   // 在菜单栏显示函数签名等详情
-  "suggest.floatConfig": {
-    "border": "single",          // 补全窗口的边框（可选值: "single", "double", "rounded", "none"）
-    "winblend": 0,               // 透明度（0-100，值越高越透明）
-    "highlight": "Pmenu",         // 让浮动窗口使用 Pmenu 高亮
-    "scrollbar": true             // 启用滚动条
-  },
+  "suggest.disableKind": false,
   "suggest.disableMenu": true,
-  "inlayHint.enable": false,
-  "[c]": {
-    "inlayHint.enable": false
-  },
-  "[cpp]": {
-    "inlayHint.enable": false
+  "suggest.detailField": "menu",
+  "suggest.floatConfig": {
+    "border": "single",
+    "winblend": 0,
+    "highlight": "Pmenu",
+    "scrollbar": true
   }
 }
