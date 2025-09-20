@@ -109,6 +109,10 @@ return {
       require("telescope").load_extension("live_grep_args")
     end,
   },
+  {
+    "vim-scripts/a.vim",
+    event = { "BufReadPre", "BufNewFile" },
+  }
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
