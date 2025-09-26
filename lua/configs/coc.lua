@@ -21,7 +21,7 @@ vim.cmd([[
 vim.api.nvim_create_user_command("Ctags", function()
   local cwd = vim.fn.getcwd()
   local result = vim.fn.system(
-    "ctags -R --exclude=.git   "
+    "ctags -R --exclude=.git  --exclude={.git,third_party,build,out} "
       .. cwd
   )
 end, {})
@@ -48,6 +48,7 @@ end, { noremap = true, silent = true })
 
 -- map("n", "<leader>z", ":A<CR>zz")
 -- map("n", "<M-o>", ":A<CR>zz")
+map("n", "<A-o>", ":A<CR>", { noremap = true, silent = true })
 map("n", "<C-o>", "<C-o>zz", { noremap = true, silent = true })
 map("n", "<leader>/", "gcc", { desc = "Toggle Comment", remap = true })
 map("v", "<leader>/", "gc", { desc = "Toggle comment", remap = true })
