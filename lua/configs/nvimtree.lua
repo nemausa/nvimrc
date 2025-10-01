@@ -13,8 +13,8 @@ M.setup({
     enable = false,
   },
   view = {
-    -- width = 30,
-    adaptive_size = true,
+    width = 30,
+    -- adaptive_size = true,
     preserve_window_proportions = true,
   },
   renderer = {
