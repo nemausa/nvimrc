@@ -37,7 +37,6 @@ map("i", "<A-h>", "0", { noremap = true, silent = true, desc = "Move to beginnin
 map("n", "<A-l>", "$", { noremap = true, silent = true, desc = "Move to end of line" })
 map("v", "<A-l>", "$", { noremap = true, silent = true, desc = "Move to end of line in visual mode" })
 map("i", "<A-l>", "<Esc>A", { noremap = true, silent = true, desc = "Move to end of line in visual mode in insert mode" })
-map("n", "<leader>z", ":A<CR>", { noremap = true, silent = true, desc = "Switching header/source files" })
 
 map("n", "<leader>tn", ":AerialNavToggle<CR>", { noremap = true, silent = true, desc = "Open or close the aerial nav window." })
 map("n", "<leader>to", ":AerialOpenAll<CR>", { noremap = true, silent = true, desc = "Open an aerial window for each visible window." })

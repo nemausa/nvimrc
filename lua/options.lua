@@ -61,7 +61,7 @@ vim.opt.path:append { "tags", "**" }
 
 
 -- 一键切换头/源文件
-vim.keymap.set("n", "<leader>sw", function()
+vim.keymap.set("n", "<leader>z", function()
   local current_file = vim.fn.expand("%:t")    -- 获取当前文件名
   local ext = vim.fn.expand("%:e")              -- 获取当前文件扩展名
   local new_file
