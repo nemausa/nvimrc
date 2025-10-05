@@ -136,7 +136,15 @@ return {
   {
     "vim-scripts/a.vim",
     event = { "BufReadPre", "BufNewFile" },
-  }
+  },
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    -- event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.session"
+    end,
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
