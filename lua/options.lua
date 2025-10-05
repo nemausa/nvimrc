@@ -12,6 +12,7 @@ vim.opt.lazyredraw = true
 vim.o.fixendofline = false
 vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
+vim.g.tagbar_autoscan = 0
 -- vim.diagnostic.disable()
 vim.opt.whichwrap = "b,s,<,>,[,]"
 vim.api.nvim_create_autocmd("ColorScheme", {

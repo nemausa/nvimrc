@@ -17,7 +17,7 @@ vim.g.mapleader = " "
 
 vim.g.tagbar_width = 30
 vim.g.tagbar_position = "left"
-vim.g.tagbar_autofocus = 1
+-- vim.g.tagbar_autofocus = 1
 
 -- bootstrap lazy and all plugins
 local lazypath = vim.fn.stdpath "data" .. "/lazy/lazy.nvim"
