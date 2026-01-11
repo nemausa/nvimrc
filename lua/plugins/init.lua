@@ -39,6 +39,30 @@ return {
     event = { "BufReadPre", "BufNewFile" },
   },
   {
+    "junegunn/fzf",
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "liuchengxu/vista.vim",
+    config = function()
+      vim.g.vista_default_executive = "ctags"
+      vim.keymap.set(
+        "n",
+        "<leader>vi",
+        ":Vista!!<CR>",
+        { noremap = true, silent = true, desc = "Open/Close vista and rotate window layout" }
+      )
+    end,
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "stevearc/aerial.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.aerial"
+    end,
+  },
+  {
     "numToStr/Comment.nvim",
     event = { "BufReadPre", "BufNewFile" },
     config = function()
@@ -101,5 +125,26 @@ return {
     config = function()
       require("telescope").load_extension("live_grep_args")
     end,
-  }
+  },
+  {
+    "vim-scripts/a.vim",
+    event = { "BufReadPre", "BufNewFile" },
+  },
+  {
+    "rmagatti/auto-session",
+    lazy = false,
+    -- event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.session"
+    end,
+  },
+  -- {
+  -- 	"nvim-treesitter/nvim-treesitter",
+  -- 	opts = {
+  -- 		ensure_installed = {
+  -- 			"vim", "lua", "vimdoc",
+  --      "html", "css"
+  -- 		},
+  -- 	},
+  -- },
 }
