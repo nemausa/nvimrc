@@ -49,11 +49,11 @@ return {
     'sbdchd/neoformat',
     event = { "BufReadPre", "BufNewFile" },
   },
-  {
-    "neoclide/coc.nvim", 
-    branch = "release", 
-    event = { "BufReadPre", "BufNewFile" },
-  },
+  -- {
+  --   "neoclide/coc.nvim", 
+  --   branch = "release", 
+  --   event = { "BufReadPre", "BufNewFile" },
+  -- },
   {
     'sheerun/vim-polyglot',
     event = { "BufReadPre", "BufNewFile" },
@@ -89,18 +89,11 @@ return {
       require "configs.dap_cpp"
     end,
   },
-  -- { "neovim/nvim-lspconfig", enabled = true }, -- 禁用 LSP
-  -- { "hrsh7th/nvim-cmp", enabled = true },      -- 禁用 nvim-cmp
+  { "neovim/nvim-lspconfig", enabled = true },
+  { "hrsh7th/nvim-cmp", enabled = true },
   {
     "dart-lang/dart-vim-plugin",
     event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    'akinsho/flutter-tools.nvim',
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.flutter"
-    end,
   },
   {
     "nvim-telescope/telescope-live-grep-args.nvim",
@@ -108,14 +101,5 @@ return {
     config = function()
       require("telescope").load_extension("live_grep_args")
     end,
-  },
-  -- {
-  -- 	"nvim-treesitter/nvim-treesitter",
-  -- 	opts = {
-  -- 		ensure_installed = {
-  -- 			"vim", "lua", "vimdoc",
-  --      "html", "css"
-  -- 		},
-  -- 	},
-  -- },
+  }
 }

@@ -14,6 +14,7 @@ vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 vim.diagnostic.disable()
 vim.opt.whichwrap = "b,s,<,>,[,]"
+vim.o.completeopt = "menu,menuone,noselect"
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",
     callback = function()

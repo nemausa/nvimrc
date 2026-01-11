@@ -61,9 +61,9 @@ vim.api.nvim_create_autocmd("BufWritePre", {
 --   autocmd BufWritePre *.cpp,*.h,*.hpp,*.c,*.cc Neoformat
 -- ]])
 
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "c", "cpp", "h", "hpp", "cc", "cxx" },
-  callback = function()
-    require("cmp").setup.buffer { enabled = false }
-  end,
-})
+-- vim.api.nvim_create_autocmd("FileType", {
+--   pattern = { "c", "cpp", "h", "hpp", "cc", "cxx" },
+--   callback = function()
+--     require("cmp").setup.buffer { enabled = false }
+--   end,
+-- })
