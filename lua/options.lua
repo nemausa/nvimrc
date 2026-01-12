@@ -13,7 +13,7 @@ vim.o.fixendofline = false
 vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
 vim.g.tagbar_autoscan = 0
-vim.diagnostic.disable()
+vim.diagnostic.enable(false)
 vim.opt.whichwrap = "b,s,<,>,[,]"
 vim.o.completeopt = "menu,menuone,noselect"
 vim.api.nvim_create_autocmd("ColorScheme", {

@@ -1,16 +1,9 @@
-local lspconfig = require("lspconfig")
+local lspconfig = vim.lsp.config
 local cmp = require("cmp")
 local nvlsp = require("nvchad.configs.lspconfig")
 
--- 启用调试日志并提供后备
-vim.lsp.set_log_level("debug")
-if not vim.lsp.log then
-  vim.lsp.log = {
-    info = function(msg) print("LSP INFO: " .. msg) end,
-    warn = function(msg) print("LSP WARN: " .. msg) end,
-    error = function(msg) print("LSP ERROR: " .. msg) end,
-  }
-end
+-- 启用调试日志
+vim.lsp.log.set_level("debug")
 
 -- 默认 LSP 配置
 nvlsp.defaults()
@@ -47,8 +40,10 @@ for _, name in ipairs(servers) do
     }
   end
 
-  lspconfig[name].setup(opts)
+  lspconfig(name, opts)
 end
+
+vim.lsp.enable(servers)
 
 -- CMP 补全配置
 cmp.setup({
