@@ -12,8 +12,9 @@ nvlsp.defaults()
 local custom_on_attach = function(client, bufnr)
   nvlsp.on_attach(client, bufnr)
   local opts = { noremap = true, silent = true, buffer = bufnr }
-  vim.keymap.set("n", "gd", vim.lsp.buf.declaration, opts)
+  vim.keymap.set("n", "gd", "<C-]>", { silent = true, buffer = bufnr, desc = "Tag jump (ctags)" })
   vim.keymap.set("n", "gD", vim.lsp.buf.definition, opts)
+  vim.keymap.set("n", "gF", vim.lsp.buf.declaration, opts)
   vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, opts)
 end
 
