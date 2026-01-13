@@ -1,4 +1,5 @@
 return {
+  -- Default plugin loading behavior.
   defaults = { lazy = true },
   install = { colorscheme = { "nvchad" } },
 
@@ -13,6 +14,7 @@ return {
 
   performance = {
     rtp = {
+      -- Disable bundled runtime plugins that are not used.
       disabled_plugins = {
         "2html_plugin",
         "tohtml",

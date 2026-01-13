@@ -1,18 +1,18 @@
 local M = {}
 
--- 搜索 project 根目录 (优先 git)
+-- Find the project root (prefer git).
 local function get_root()
-  local git_root = vim.fn.systemlist('git rev-parse --show-toplevel')[1]
-  if git_root and git_root ~= '' then
+  local git_root = vim.fn.systemlist("git rev-parse --show-toplevel")[1]
+  if git_root and git_root ~= "" then
     return git_root
   end
   return vim.fn.getcwd()
 end
 
--- 获取完整basename（多后缀处理，比如 foo.bar.cpp）
+-- Get the full basename (handles multi-suffix files like foo.bar.cpp).
 local function get_basename(path)
   local fname = vim.fn.fnamemodify(path, ":t")
-  return fname:gsub('%.[^%.]+$', '')
+  return fname:gsub("%.[^%.]+$", "")
 end
 
 function M.switch()
@@ -21,7 +21,7 @@ function M.switch()
     return
   end
 
-  local ext  = vim.fn.fnamemodify(current_path, ":e")
+  local ext = vim.fn.fnamemodify(current_path, ":e")
   local name = get_basename(current_path)
   local root = get_root()
 
@@ -35,27 +35,27 @@ function M.switch()
     return
   end
 
-  -- 当前目录优先
+  -- Prefer current directory.
   local curdir = vim.fn.fnamemodify(current_path, ":h")
   for _, e in ipairs(targets) do
     local local_path = string.format("%s/%s.%s", curdir, name, e)
     if vim.fn.filereadable(local_path) == 1 then
-      vim.cmd('edit ' .. vim.fn.fnameescape(local_path))
+      vim.cmd("edit " .. vim.fn.fnameescape(local_path))
       return
     end
   end
 
-  -- 全项目搜索
-  -- 启用递归 globstar
+  -- Project-wide search.
+  -- Enable recursive globstar.
   vim.o.globstar = true
   for _, e in ipairs(targets) do
     local pattern = string.format("%s/**/%s.%s", root, name, e)
     local matches = vim.fn.glob(pattern, true, true)
     if matches and #matches > 0 then
-      -- 多个匹配时排除当前文件
+      -- Exclude the current file when multiple matches exist.
       for _, f in ipairs(matches) do
         if vim.fn.fnamemodify(f, ":p") ~= vim.fn.fnamemodify(current_path, ":p") then
-          vim.cmd('edit ' .. vim.fn.fnameescape(f))
+          vim.cmd("edit " .. vim.fn.fnameescape(f))
           return
         end
       end

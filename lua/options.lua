@@ -1,56 +1,21 @@
 require "nvchad.options"
 
--- add yours here!
-vim.opt.number = true
-vim.opt.relativenumber = true
-vim.opt.colorcolumn = "80"
-vim.opt.ignorecase = true
-vim.opt.smartcase = true
-vim.g.ale_enabled = 0
-vim.opt.termguicolors = true
-vim.opt.lazyredraw = true
-vim.o.fixendofline = false
-vim.o.clipboard = "unnamedplus"
-vim.g.tagbar_autoscan = 0
+local opt = vim.opt
+
+-- UI
+opt.number = true
+opt.relativenumber = true
+opt.colorcolumn = "80"
+
+-- Search
+opt.ignorecase = true
+opt.smartcase = true
+
+-- Diagnostics
 vim.diagnostic.enable(false)
-vim.opt.whichwrap = "b,s,<,>,[,]"
-vim.o.completeopt = "menu,menuone,noselect"
-vim.api.nvim_create_autocmd("ColorScheme", {
-    pattern = "*",
-    callback = function()
-      local bg = vim.api.nvim_get_hl_by_name("Normal", true).background
-      local fg = vim.api.nvim_get_hl_by_name("Normal", true).foreground
-      if bg and fg then
-        vim.cmd(string.format("highlight Pmenu guibg=#%06x guifg=#%06x", bg, fg))
-      end
-    end,
-  })
 
-if os.getenv "SSH_TTY" then
-  vim.g.clipboard = {
-    name = "OSC 52",
-    -- Try to use OSC 52 escape sequences to copy to system clipboard
-    -- It should not break anything if it’s not supported
-    copy = {
-      ["+"] = require("vim.ui.clipboard.osc52").copy "+",
-      ["*"] = require("vim.ui.clipboard.osc52").copy "*",
-    },
-    -- Disable paste since it does not work in some terminals,
-    -- i.e., xterm.js (many app based on Web tech use this)
-    paste = {
-      ["+"] = function(lines)
-        return vim.split(vim.fn.getreg '"', "\n")
-      end,
-      ["*"] = function(lines)
-        return vim.split(vim.fn.getreg '"', "\n")
-      end,
-    },
-  }
-end
-
--- 设置支持的文件扩展名（.cpp, .c, .h, .hpp）
-vim.opt.suffixesadd = { ".c", ".cpp", ".cc", ".h", ".hpp", ".hh" }
-
--- 设置路径搜索：全局路径（包括当前目录、所有子目录、src、include）
-vim.opt.path:append { ".", "src", "include", "**", "../**" }
-vim.opt.path:append { "tags", "**" }
+-- Indent
+opt.tabstop = 4
+opt.shiftwidth = 4
+opt.softtabstop = 4
+opt.expandtab = true
