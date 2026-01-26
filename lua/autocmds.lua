@@ -10,9 +10,6 @@ local function autosave_current()
   pcall(vim.cmd, "silent! update")
 end
 
-local function lsp_format()
-  pcall(vim.lsp.buf.format)
-end
 
 -- Auto-save
 vim.api.nvim_create_autocmd({ "BufLeave", "FocusLost" }, {
@@ -34,11 +31,4 @@ vim.api.nvim_create_autocmd("FileType", {
   callback = function()
     vim.opt_local.commentstring = "// %s"
   end,
-})
-
--- Format lua on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-  group = augroup,
-  pattern = "*.lua",
-  callback = lsp_format,
 })

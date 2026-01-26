@@ -36,8 +36,29 @@ map("n", "<leader>yA", "<cmd>%y+<cr>", { desc = "Copy buffer to clipboard" })
 
 -- File/format
 map("n", "<leader>cf", function()
-  require("conform").format { async = true, lsp_fallback = true }
-end, { desc = "Format file (conform)" })
+  local conform = require("conform")
+  local targets = {}
+
+  for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+    if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted and vim.bo[buf].buftype == "" then
+      local ft = vim.bo[buf].filetype
+      if ft == "c" or ft == "cpp" then
+        table.insert(targets, buf)
+      end
+    end
+  end
+
+  if #targets == 0 then
+    vim.notify("clang-format: no C/C++ buffers", vim.log.levels.WARN)
+    return
+  end
+
+  for _, buf in ipairs(targets) do
+    conform.format { bufnr = buf, async = false, lsp_fallback = false, formatters = { "clang-format" } }
+  end
+
+  vim.notify(string.format("clang-format: formatted %d buffer(s)", #targets))
+end, { desc = "clang-format all open C/C++ buffers" })
 map("n", "<leader>mp", "<cmd>MarkdownPreview<cr>", { desc = "Preview markdown" })
 
 -- Tags / symbols
