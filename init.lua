@@ -41,6 +41,5 @@ vim.schedule(function()
   require "autocmds"
   require "configs.telescope"
   require "configs.nvimtree"
-  require "configs.coc"
   require "configs.header_switch"
 end)

@@ -3,7 +3,7 @@ require "nvchad.options"
 -- add yours here!
 vim.opt.number = true
 vim.opt.relativenumber = true
-vim.opt.colorcolumn = "80"
+vim.opt.colorcolumn = "100"
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.g.ale_enabled = 0
@@ -12,7 +12,11 @@ vim.opt.lazyredraw = true
 vim.o.fixendofline = false
 vim.o.clipboard = "unnamedplus"
 vim.o.termguicolors = true
-vim.diagnostic.disable()
+if vim.fn.has "nvim-0.11" == 1 then
+  vim.diagnostic.enable(false)
+else
+  vim.diagnostic.disable()
+end
 vim.opt.whichwrap = "b,s,<,>,[,]"
 vim.api.nvim_create_autocmd("ColorScheme", {
     pattern = "*",

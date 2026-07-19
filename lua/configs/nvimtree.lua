@@ -10,7 +10,7 @@ M.setup({
   --   update_root = false,
   -- },
   git = {
-    enable = false,
+    enable = true,
   },
   view = {
     width = 30,

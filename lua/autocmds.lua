@@ -26,10 +26,23 @@ vim.keymap.set("n", "<leader>st", ToggleTabSize, { noremap = true, silent = true
 vim.keymap.set("n", "<leader>t2", SetTab2, { noremap = true, silent = true , desc = "Tab size set to 2"} )
 vim.keymap.set("n", "<leader>t4", SetTab4, { noremap = true, silent = true , desc = "Tab size set to 4"} )
 
-vim.cmd([[
-  autocmd BufLeave,FocusLost * silent! wa!
-  autocmd InsertLeave * silent! write
-]])
+vim.api.nvim_create_autocmd({ "BufLeave", "WinLeave", "FocusLost" }, {
+  group = vim.api.nvim_create_augroup("autosave_on_focus_change", { clear = true }),
+  callback = function(args)
+    local bufnr = args.buf ~= 0 and args.buf or vim.api.nvim_get_current_buf()
+    local buffer_options = vim.bo[bufnr]
+
+    if buffer_options.buftype == ""
+      and buffer_options.modifiable
+      and buffer_options.modified
+      and vim.api.nvim_buf_get_name(bufnr) ~= ""
+    then
+      vim.api.nvim_buf_call(bufnr, function()
+        vim.cmd "silent! update"
+      end)
+    end
+  end,
+})
 
 vim.cmd("autocmd FileType c,cpp setlocal commentstring=//\\ %s")
 
@@ -49,14 +62,3 @@ vim.g.tagbar_type_c = {
     struct = "s",
   },
 }
-
-vim.api.nvim_create_autocmd("BufWritePre", {
-  pattern = "*.lua",
-  callback = function()
-    vim.lsp.buf.format()
-  end,
-})
-
-vim.cmd([[
-  autocmd BufWritePre *.cpp,*.h,*.hpp,*.c,*.cc Neoformat
-]])

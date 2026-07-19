@@ -1,19 +1,16 @@
 return {
   {
     "stevearc/conform.nvim",
-    -- event = 'BufWritePre', -- uncomment for format on save
     opts = require "configs.conform",
   },
 
-  -- These are some examples, uncomment them if you want to see them work!
-  -- {
-  --   "neovim/nvim-lspconfig",
-  --   lazy = false,
-  --   --event = { "BufReadPre", "BufNewFile" },
-  --   config = function()
-  --     require "configs.lspconfig"
-  --   end,
-  -- },
+  {
+    "neovim/nvim-lspconfig",
+    event = { "BufReadPre", "BufNewFile" },
+    config = function()
+      require "configs.lspconfig"
+    end,
+  },
   {
     "vim-scripts/a.vim",
     event = { "BufReadPre", "BufNewFile" },
@@ -44,15 +41,6 @@ return {
     config = function()
       require('Comment').setup()
     end
-  },
-  {
-    "neoclide/coc.nvim", 
-    branch = "release", 
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    'sbdchd/neoformat',
-    event = { "BufReadPre", "BufNewFile" },
   },
   {
     'sheerun/vim-polyglot',
@@ -89,8 +77,59 @@ return {
       require "configs.dap_cpp"
     end,
   },
-  { "neovim/nvim-lspconfig", enabled = false }, -- 禁用 LSP
-  { "hrsh7th/nvim-cmp", enabled = false },      -- 禁用 nvim-cmp
+  {
+    "lewis6991/gitsigns.nvim",
+    opts = function(_, opts)
+      local previous_on_attach = opts.on_attach
+
+      opts.on_attach = function(bufnr)
+        if previous_on_attach then
+          previous_on_attach(bufnr)
+        end
+
+        local gitsigns = require "gitsigns"
+        local map = function(mode, lhs, rhs, desc)
+          vim.keymap.set(mode, lhs, rhs, { buffer = bufnr, silent = true, desc = desc })
+        end
+
+        map("n", "]c", function()
+          if vim.wo.diff then
+            vim.cmd.normal { "]c", bang = true }
+          else
+            gitsigns.nav_hunk "next"
+          end
+        end, "Git next hunk")
+
+        map("n", "[c", function()
+          if vim.wo.diff then
+            vim.cmd.normal { "[c", bang = true }
+          else
+            gitsigns.nav_hunk "prev"
+          end
+        end, "Git previous hunk")
+
+        map("n", "<leader>hp", gitsigns.preview_hunk, "Git preview hunk")
+        map("n", "<leader>hs", gitsigns.stage_hunk, "Git stage hunk")
+        map("n", "<leader>hu", gitsigns.undo_stage_hunk, "Git undo stage hunk")
+        map("n", "<leader>hr", gitsigns.reset_hunk, "Git reset hunk")
+        map("n", "<leader>hb", function()
+          gitsigns.blame_line { full = true }
+        end, "Git blame line")
+      end
+
+      return opts
+    end,
+  },
+  {
+    "sindrets/diffview.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+    cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
+    keys = {
+      { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git diff view" },
+      { "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git file history" },
+      { "<leader>gq", "<cmd>DiffviewClose<CR>", desc = "Git close diff view" },
+    },
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
