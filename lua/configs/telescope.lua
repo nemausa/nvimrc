@@ -30,11 +30,20 @@ require("telescope").setup({
     },
     mappings = {
       i = {
-        ["<Esc>"] = actions.close,
+        ["<Esc>"] = {
+          actions.close,
+          type = "action",
+          opts = { nowait = true, silent = true },
+        },
         ["<C-k>"] = actions.move_selection_previous,
         ["<C-j>"] = actions.move_selection_next,
       },
       n = {
+        ["<Esc>"] = {
+          actions.close,
+          type = "action",
+          opts = { nowait = true, silent = true },
+        },
         ["<C-c>"] = actions.close,
         ["k"] = actions.move_selection_previous,
         ["j"] = actions.move_selection_next,

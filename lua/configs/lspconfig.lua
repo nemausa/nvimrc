@@ -1,16 +1,16 @@
 local nvlsp = require "nvchad.configs.lspconfig"
-local lspconfig = require "lspconfig"
 
 nvlsp.defaults()
 
 for _, server in ipairs { "pyright", "ts_ls" } do
-  lspconfig[server].setup {
+  vim.lsp.config(server, {
     capabilities = nvlsp.capabilities,
     on_init = nvlsp.on_init,
-  }
+  })
+  vim.lsp.enable(server)
 end
 
-lspconfig.clangd.setup {
+vim.lsp.config("clangd", {
   cmd = {
     "clangd",
     "--background-index",
@@ -20,9 +20,9 @@ lspconfig.clangd.setup {
   },
   capabilities = nvlsp.capabilities,
   on_init = nvlsp.on_init,
-  root_dir = lspconfig.util.root_pattern("compile_commands.json", "compile_flags.txt", ".git"),
-  single_file_support = true,
-}
+  root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
+})
+vim.lsp.enable "clangd"
 
 vim.api.nvim_create_autocmd("LspAttach", {
   group = vim.api.nvim_create_augroup("cpp_lsp_keymaps", { clear = true }),

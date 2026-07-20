@@ -126,7 +126,46 @@ return {
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git diff view" },
-      { "<leader>gh", "<cmd>DiffviewFileHistory %<CR>", desc = "Git file history" },
+      {
+        "<leader>gh",
+        function()
+          local actions = require "telescope.actions"
+          local action_state = require "telescope.actions.state"
+
+          require("telescope.builtin").git_commits {
+            attach_mappings = function(prompt_bufnr)
+              actions.select_default:replace(function()
+                local entry = action_state.get_selected_entry()
+                if not entry then
+                  return
+                end
+
+                actions.close(prompt_bufnr)
+
+                local diffview_config = require("diffview.config").get_config()
+                local original_listing_style = diffview_config.file_panel.listing_style
+                local original_win_config = diffview_config.file_panel.win_config
+
+                diffview_config.file_panel.listing_style = "list"
+                diffview_config.file_panel.win_config = vim.tbl_extend("force", {}, original_win_config, {
+                  width = 50,
+                })
+
+                local ok, err = pcall(vim.cmd, "DiffviewOpen " .. entry.value .. "^!")
+
+                diffview_config.file_panel.listing_style = original_listing_style
+                diffview_config.file_panel.win_config = original_win_config
+
+                if not ok then
+                  error(err)
+                end
+              end)
+              return true
+            end,
+          }
+        end,
+        desc = "Git commit history",
+      },
       { "<leader>gq", "<cmd>DiffviewClose<CR>", desc = "Git close diff view" },
     },
   },
