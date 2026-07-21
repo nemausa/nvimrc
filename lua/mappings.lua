@@ -15,6 +15,33 @@ map("i", "kk", "<Esc>")
 
 map("n", "<leader>mp", ":MarkdownPreview<CR>", {})
 
+map({ "n", "v" }, "<leader>fs", function()
+  local opts = {
+    additional_args = { "--fixed-strings", "--ignore-case" },
+  }
+
+  local make_entry = require "telescope.make_entry"
+  local utils = require "telescope.utils"
+  local default_maker = make_entry.gen_from_vimgrep(opts)
+
+  opts.entry_maker = function(line)
+    local entry = default_maker(line)
+    entry.display = function(item)
+      local text = vim.trim(item.text or "")
+      local display_path = utils.transform_path(opts, item.filename)
+      local coordinates = item.lnum and (":" .. item.lnum) or ""
+      if item.col then
+        coordinates = coordinates .. ":" .. item.col
+      end
+
+      return text .. "  " .. display_path .. coordinates
+    end
+    return entry
+  end
+
+  require("telescope.builtin").live_grep(opts)
+end, { desc = "telescope live grep literal string (ignore case)" })
+
 map("n", "<leader>ca", 'gg"+yG')
 map("x", "<A-Up>", ":move '<-2<CR>gv=gv")
 map("n", "<A-Up>", ":move .-2<CR>==")

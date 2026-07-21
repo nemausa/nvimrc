@@ -123,6 +123,20 @@ return {
   {
     "sindrets/diffview.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
+    opts = function()
+      local actions = require "diffview.actions"
+
+      return {
+        keymaps = {
+          file_panel = {
+            { "n", "j", actions.select_next_entry, { desc = "Open diff for next file" } },
+            { "n", "<down>", actions.select_next_entry, { desc = "Open diff for next file" } },
+            { "n", "k", actions.select_prev_entry, { desc = "Open diff for previous file" } },
+            { "n", "<up>", actions.select_prev_entry, { desc = "Open diff for previous file" } },
+          },
+        },
+      }
+    end,
     cmd = { "DiffviewOpen", "DiffviewClose", "DiffviewFileHistory" },
     keys = {
       { "<leader>gd", "<cmd>DiffviewOpen<CR>", desc = "Git diff view" },
@@ -148,7 +162,7 @@ return {
 
                 diffview_config.file_panel.listing_style = "list"
                 diffview_config.file_panel.win_config = vim.tbl_extend("force", {}, original_win_config, {
-                  width = 50,
+                  width = 40,
                 })
 
                 local ok, err = pcall(vim.cmd, "DiffviewOpen " .. entry.value .. "^!")
