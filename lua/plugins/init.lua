@@ -183,6 +183,41 @@ return {
       { "<leader>gq", "<cmd>DiffviewClose<CR>", desc = "Git close diff view" },
     },
   },
+  {
+    "MagicDuck/grug-far.nvim",
+    cmd = { "GrugFar", "GrugFarWithin" },
+    opts = {
+      enabledEngines = { "ripgrep" },
+      windowCreationCommand = "tab split",
+      startInInsertMode = true,
+      engines = {
+        ripgrep = {
+          path = vim.fn.expand "~/.local/bin/rg",
+          defaults = {
+            flags = "--fixed-strings",
+          },
+        },
+      },
+    },
+    keys = {
+      {
+        "<leader>fr",
+        function()
+          require("grug-far").open()
+        end,
+        mode = "n",
+        desc = "Workspace search and replace",
+      },
+      {
+        "<leader>fr",
+        function()
+          require("grug-far").with_visual_selection()
+        end,
+        mode = "x",
+        desc = "Workspace search selected text",
+      },
+    },
+  },
   -- {
   -- 	"nvim-treesitter/nvim-treesitter",
   -- 	opts = {
