@@ -6,12 +6,9 @@
 local M = {}
 
 M.base46 = {
-	theme = "onedark",
-
-	-- hl_override = {
-	-- 	Comment = { italic = true },
-	-- 	["@comment"] = { italic = true },
-	-- },
+  -- Base46 still colors NvChad's UI. Code highlighting is applied by
+  -- olimorris/onedarkpro.nvim after Base46 finishes loading.
+  theme = "onedark",
 }
 
 M.colorify = {

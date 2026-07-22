@@ -34,6 +34,9 @@ dofile(vim.g.base46_cache .. "defaults")
 dofile(vim.g.base46_cache .. "statusline")
 
 require "options"
+-- Apply the code theme after Base46, before FilePost plugins register their
+-- ColorScheme callbacks.
+vim.cmd.colorscheme "onedark"
 require "nvchad.autocmds"
 
 vim.schedule(function()

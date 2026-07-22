@@ -1,5 +1,40 @@
 return {
   {
+    "olimorris/onedarkpro.nvim",
+    lazy = false,
+    priority = 1000,
+    config = function()
+      require("onedarkpro").setup {
+        styles = {
+          comments = "italic",
+        },
+        highlights = {
+          -- A subtle red tint keeps column 100 visible without dominating code.
+          ColorColumn = { bg = "#3b3239" },
+          -- NvChad configures indent-blankline with these group names.
+          IblChar = { fg = "${indentline}" },
+          IblScopeChar = { fg = "${purple}" },
+        },
+      }
+    end,
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter",
+    opts = function(_, opts)
+      -- NvChad's parent opts load cached Base46 syntax groups here. Apply the
+      -- code theme immediately afterward, before indent-blankline is loaded.
+      vim.cmd.colorscheme "onedark"
+      return opts
+    end,
+  },
+
+  {
+    "folke/which-key.nvim",
+    enabled = false,
+  },
+
+  {
     "stevearc/conform.nvim",
     opts = require "configs.conform",
   },
@@ -44,38 +79,11 @@ return {
   },
   {
     'sheerun/vim-polyglot',
-    event = { "BufReadPre", "BufNewFile" },
+    enabled = false,
   },
   {
     "iamcco/markdown-preview.nvim",
     event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    "mfussenegger/nvim-dap",
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    "nvim-neotest/nvim-nio",
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    "mfussenegger/nvim-dap-python",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.dap_python"
-    end,
-  },
-  {
-    "rcarriga/nvim-dap-ui",
-    event = { "BufReadPre", "BufNewFile" },
-  },
-  {
-    "theHamsta/nvim-dap-virtual-text",
-    event = { "BufReadPre", "BufNewFile" },
-    config = function()
-      require "configs.dap_config"
-      require "configs.dap_cpp"
-    end,
   },
   {
     "lewis6991/gitsigns.nvim",
@@ -188,13 +196,22 @@ return {
     cmd = { "GrugFar", "GrugFarWithin" },
     opts = {
       enabledEngines = { "ripgrep" },
-      windowCreationCommand = "tab split",
+      windowCreationCommand = 'topleft vsplit | execute "vertical resize " . float2nr(&columns * 0.3) | setlocal winfixwidth',
       startInInsertMode = true,
+      openTargetWindow = {
+        preferredLocation = "right",
+        useScratchBuffer = true,
+      },
+      keymaps = {
+        openNextLocation = { n = "j" },
+        openPrevLocation = { n = "k" },
+        gotoLocation = { n = "<enter>" },
+      },
       engines = {
         ripgrep = {
-          path = vim.fn.expand "~/.local/bin/rg",
+          path = "rg",
           defaults = {
-            flags = "--fixed-strings",
+            flags = "--fixed-strings --ignore-case",
           },
         },
       },

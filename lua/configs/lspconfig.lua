@@ -2,13 +2,19 @@ local nvlsp = require "nvchad.configs.lspconfig"
 
 nvlsp.defaults()
 
-for _, server in ipairs { "pyright", "ts_ls" } do
-  vim.lsp.config(server, {
-    capabilities = nvlsp.capabilities,
-    on_init = nvlsp.on_init,
-  })
-  vim.lsp.enable(server)
-end
+-- NvChad's default on_init callback disables semantic tokens. One Dark Pro
+-- uses them to distinguish functions, methods, types, parameters, and fields.
+local function allow_semantic_tokens() end
+
+vim.lsp.config("lua_ls", {
+  on_init = allow_semantic_tokens,
+})
+
+vim.lsp.config("pyright", {
+  capabilities = nvlsp.capabilities,
+  on_init = allow_semantic_tokens,
+})
+vim.lsp.enable "pyright"
 
 vim.lsp.config("clangd", {
   cmd = {
@@ -19,7 +25,7 @@ vim.lsp.config("clangd", {
     "--completion-style=detailed",
   },
   capabilities = nvlsp.capabilities,
-  on_init = nvlsp.on_init,
+  on_init = allow_semantic_tokens,
   root_markers = { "compile_commands.json", "compile_flags.txt", ".git" },
 })
 vim.lsp.enable "clangd"
